@@ -34,8 +34,12 @@ o
 
 public class Solution {
 
-		public static void printSubstrings(String str) {
-		for(int i=0;i<=str.length()-1;i++){
+
+	    public static void printSubstrings(String str) {
+
+	    //we take one more the required has index j is exclusive
+
+            for(int i=0;i<=str.length()-1;i++){
             for(int j=i+1;j<=str.length();j++){
                 System.out.println(str.substring(i,j));
 
