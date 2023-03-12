@@ -32,19 +32,15 @@ co
 o
 
 
+
 public class Solution {
 
-
-	    public static void printSubstrings(String str) {
-
-	    //we take one more the required has index j is exclusive
-
-            for(int i=0;i<=str.length()-1;i++){
-            for(int j=i+1;j<=str.length();j++){
-                System.out.println(str.substring(i,j));
-
-            }
-        }
+	public static void printSubstrings(String str) {
+		for(int start=0;start<str.length();start++){
+			for(int end=start;end<str.length();end++){
+				System.out.println(str.substring(start,end+1));
+			}
+		}
 	}
 
 }
