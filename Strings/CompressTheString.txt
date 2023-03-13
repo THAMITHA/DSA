@@ -52,3 +52,31 @@ public class Solution {
 	}
 
 }
+
+Approach 2:
+
+class Solution {
+    public int compress(char[] chars) {
+     int n=chars.length,index=0;
+    //  String res="";
+     for(int i=0;i<n;i++){
+         int count=1;
+         while(i<n-1 && chars[i]==chars[i+1]){
+             count++;
+             i++;
+         }
+         chars[index++]=chars[i];
+         if(count>1){
+             
+            //  String str=String.valueOf(count);
+            //  for(char ch: str.toCharArray()){
+                for(char ch:Integer.toString(count).toCharArray()){
+                 chars[index++]=ch;
+
+             }
+         }
+         
+     }   
+     return index;
+    }
+}
