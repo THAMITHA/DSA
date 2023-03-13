@@ -50,3 +50,30 @@ public class main {
 		System.out.println(reverseWord(str));
 	}
 }
+
+
+
+Approach 2:
+<leetcode>
+class Solution {
+    public String reverseWords(String input) {
+        String ans="";
+		int currentStart=0,n=input.length();
+		while(currentStart<n) {
+			String revWord="";
+			int currentEnd=currentStart+1;
+			while(currentEnd<n && input.charAt(currentEnd)!=' ') {
+				currentEnd++;
+			}
+			for(int i=currentStart;i<currentEnd;i++) {
+				revWord=input.charAt(i)+revWord;
+			}
+			ans+=revWord+" ";
+			currentStart=currentEnd+1;
+			
+			
+		}
+        ans=ans.trim();
+		return ans;
+    }
+}
