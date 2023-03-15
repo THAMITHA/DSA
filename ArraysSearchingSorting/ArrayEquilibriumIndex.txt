@@ -44,6 +44,7 @@ Sample Output 2 :
 -1
 2
 
+Approach 1:
 public class Solution {
 
 	public static int arrayEquilibriumIndex(int[] arr){  
@@ -72,4 +73,28 @@ public class Solution {
 	}
         return -1;
 }
+}
+
+Approach 2:
+
+public class Solution {
+
+	public static int arrayEquilibriumIndex(int[] arr){  
+		int n=arr.length,Tsum=0;
+		for(int i=0;i<n;i++){
+			Tsum+=arr[i];
+		}
+		int leftSum=0,rightSum=0;
+		for(int i=0;i<n;i++){
+			rightSum=Tsum-leftSum-arr[i];
+			if(leftSum==rightSum){
+				return i;
+			}
+			else {
+				leftSum+=arr[i];
+			}
+		}
+
+		return -1;
+	}
 }
