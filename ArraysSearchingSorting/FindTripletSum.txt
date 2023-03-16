@@ -107,3 +107,65 @@ public class Solution {
 
 }
 
+
+
+///////////////////////////////////
+
+import java.util.Arrays;
+public class Solution {	
+
+	public static int tripletSum(int[] arr, int num) {
+		Arrays.sort(arr);
+		int n=arr.length,totalNumber=0;
+		for(int i=0;i<n;i++){
+			int pairSum=num-arr[i];
+			int numPairs=pairSum(arr, (i+1), (n-1), pairSum);
+			totalNumber+=numPairs;
+		}
+		return totalNumber;
+	}
+
+	public static int pairSum(int[] arr,int startIndex,int endIndex,int num){
+		//  Arrays.sort(arr);
+		int numPairs=0;	
+		 while(startIndex<endIndex){
+			 
+			 if(arr[startIndex]+arr[endIndex]<num){
+				 startIndex++;			
+			 }
+
+			 else if(arr[startIndex]+arr[endIndex]>num){
+				 endIndex--;
+			 }
+
+			 else{
+				 int startElement = arr[startIndex] ;
+				 int endElement = arr[endIndex];
+
+				 if(arr[startIndex]==arr[endIndex]){
+					 int totalNumber=(endIndex-startIndex)+1;
+					 numPairs+=totalNumber*(totalNumber-1)/2;
+					 return numPairs;
+				 }
+
+				 int tempStartIndex=startIndex+1;
+				 int tempEndIndex=endIndex-1;
+
+				 while(tempStartIndex<=tempEndIndex &&  arr[tempStartIndex]==startElement){
+					 	tempStartIndex+=1;
+				 }
+
+				 while(tempStartIndex<=tempEndIndex && arr[tempEndIndex]==endElement){
+					 tempEndIndex-=1;
+				 }
+
+				int Tstart=tempStartIndex-startIndex;
+				int Tend=endIndex-tempEndIndex;
+				numPairs+=(Tend*Tstart);
+				startIndex=tempStartIndex;
+				endIndex=tempEndIndex;
+			 }
+		 }
+		 return numPairs;
+	}
+}
