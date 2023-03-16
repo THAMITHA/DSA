@@ -101,47 +101,47 @@ import java.util.Arrays;
 public class Solution {	
 
 	public static int pairSum(int[] arr, int num) {
-		int n=arr.length,startIndex=0,endIndex=arr.length-1,numPairs=0;
-		Arrays.sort(arr);
-		while(startIndex<endIndex){
-			if(arr[startIndex]+arr[endIndex]>num){
-				endIndex--;
-			}
-				else if(arr[startIndex]+arr[endIndex]<num){
-					startIndex++;
-				}
+		 Arrays.sort(arr);
+		 int startIndex=0,endIndex=arr.length-1,numPairs=0;
 			
-			else{
-				int tempStartElement=arr[startIndex];
-				int tempEndElement=arr[endIndex];
-					if(tempStartElement==tempEndElement){
-					int totalElements=(endIndex-startIndex)+1;
-					numPairs+=(totalElements*(totalElements-1))/2;
-					return numPairs;
-				}
-				int tempStartIndex=startIndex+1;
-				int tempEndIndex=endIndex-1;
-				while(tempEndIndex>=tempStartIndex && arr[tempStartIndex]==tempStartElement){
-						tempStartIndex+=1;
-				}
+		 while(startIndex<endIndex){
+			 
+			 if(arr[startIndex]+arr[endIndex]<num){
+				 startIndex++;			
+			 }
 
-				while(tempEndIndex>=tempStartIndex && arr[tempEndIndex]==tempEndElement){
-						tempEndIndex-=1;
-				}
+			 else if(arr[startIndex]+arr[endIndex]>num){
+				 endIndex--;
+			 }
+
+			 else{
+				 int startElement = arr[startIndex] ;
+				 int endElement = arr[endIndex];
+
+				 if(arr[startIndex]==arr[endIndex]){
+					 int totalNumber=(endIndex-startIndex)+1;
+					 numPairs+=totalNumber*(totalNumber-1)/2;
+					 return numPairs;
+				 }
+
+				 int tempStartIndex=startIndex+1;
+				 int tempEndIndex=endIndex-1;
+
+				 while(tempStartIndex<=tempEndIndex &&  arr[tempStartIndex]==startElement){
+					 	tempStartIndex+=1;
+				 }
+
+				 while(tempStartIndex<=tempEndIndex && arr[tempEndIndex]==endElement){
+					 tempEndIndex-=1;
+				 }
 
 				int Tstart=tempStartIndex-startIndex;
 				int Tend=endIndex-tempEndIndex;
-
-				numPairs+=(Tstart*Tend);
+				numPairs+=(Tend*Tstart);
 				startIndex=tempStartIndex;
-				endIndex=tempEndIndex;	
-
-
-				
-			}
-
-		}
-
-			return numPairs;			
+				endIndex=tempEndIndex;
+			 }
+		 }
+		 return numPairs;
 	}
 }
