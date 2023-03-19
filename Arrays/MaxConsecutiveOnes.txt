@@ -49,3 +49,24 @@ class Solution {
         return maxi;
     }
 }
+
+or
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int maxHere=0,maxi=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==1){
+              
+                maxHere++;
+                  maxi=Math.max(maxi,maxHere);
+ 
+            }
+            else{
+                maxHere=0;
+            }
+        }
+        maxi=Math.max(maxi,maxHere);
+        return maxi;
+    }
+}
