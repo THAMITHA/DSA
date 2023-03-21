@@ -1,0 +1,43 @@
+Approach 1:
+
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int getLongestSubarray(int []nums, int k) {
+		int maxLen=0;
+		for(int i=0;i<nums.length;i++){
+			int sum=0;
+			for(int j=i;j<nums.length;j++){
+				sum+=nums[j];
+				if(sum==k){
+					maxLen=Math.max(maxLen,j-i+1);
+				}
+			}
+		}
+		return maxLen;
+	}
+
+}
+
+Approach 2:
+
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int getLongestSubarray(int []nums, int k) {
+		HashMap<Integer,Integer>perfix=new HashMap<>();
+		int ans=0,sum=0;
+		perfix.put(0,-1);
+
+		for(int i=0;i<nums.length;i++){
+			sum+=nums[i];
+			if(perfix.containsKey(sum-k)){
+				ans=Math.max(ans,i-perfix.get(sum-k));
+			}
+			if(!perfix.containsKey(sum)){
+				perfix.put(sum,i);
+			}
+		}
+		return ans;
+	} 
+}
