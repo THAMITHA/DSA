@@ -75,3 +75,28 @@ class Solution {
         return max;
     }
 }
+///////////////////////////////////////////////////
+to find start and end for maxSubArray
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=0,maxi=Integer.MIN_VALUE,start=-1,mEnd=-1,mStart=-1;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            if(sum==0){
+                start=i;
+            }
+            if(sum>maxi){
+                maxi=sum;
+                mStart=start;
+                mEnd=i;
+            }
+            if(sum<0){
+                sum=0;
+            }
+            
+
+        }
+        return maxi;
+    }
+}
